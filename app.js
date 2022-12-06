@@ -50,11 +50,11 @@ app.use((error, req, res, next) => {
   });
 });
 
-const init = async () => {
-  await rebuildDB();
-};
+// const init = async () => {
+//   await rebuildDB();
+// };
 
-init();
+// init();
 
 const PORT = process.env["PORT"] ?? 4000;
 const server = http.createServer(app);
