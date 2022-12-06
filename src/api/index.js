@@ -1,20 +1,20 @@
-const DEV_MODE = process.env.DEV_MODE;
-let BASE_URL = '';
+// const DEV_MODE = process.env.DEV_MODE;
+let BASE_URL = "";
 
-if (DEV_MODE) {
-  BASE_URL = 'http://localhost:4000/api';
-} else {
-  BASE_URL = process.env.REACT_APP_API_URL;
-  console.log(BASE_URL)
-}
+// if (DEV_MODE) {
+BASE_URL = "http://localhost:4000/api";
+// } else {
+//   BASE_URL = process.env.REACT_APP_API_URL;
+//   console.log(BASE_URL)
+// }
 
 //Register
 export const registerUser = async (user) => {
   try {
     const response = await fetch(`${BASE_URL}/users/register`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         firstname: user.firstname,
@@ -23,8 +23,8 @@ export const registerUser = async (user) => {
         password: user.password,
         confirmPassword: user.confirmPassword,
         email: user.email,
-        picUrl: user.picUrl
-      })
+        picUrl: user.picUrl,
+      }),
     });
     const result = await response.json();
     return result;
@@ -37,14 +37,14 @@ export const registerUser = async (user) => {
 export const loginUser = async (user) => {
   try {
     const response = await fetch(`${BASE_URL}/users/login`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         username: user.username,
-        password: user.password
-      })
+        password: user.password,
+      }),
     });
     const result = await response.json();
     return result;
@@ -59,9 +59,9 @@ export const getProfileData = async (token, username) => {
   try {
     const response = await fetch(`${BASE_URL}/users/profile/${username}`, {
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
@@ -75,9 +75,9 @@ export const getAllPublicPosts = async (token) => {
   try {
     const response = await fetch(`${BASE_URL}/posts/public`, {
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
@@ -90,9 +90,9 @@ export const getNewsFeed = async (token) => {
   try {
     const response = await fetch(`${BASE_URL}/posts/newsfeed`, {
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
@@ -105,9 +105,9 @@ export const getPostsByUserId = async (token, userId) => {
   try {
     const response = await fetch(`${BASE_URL}/posts/me`, {
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
@@ -119,16 +119,16 @@ export const getPostsByUserId = async (token, userId) => {
 export const newPost = async (token, _text, _time, _isPublic) => {
   try {
     const response = await fetch(`${BASE_URL}/posts/new`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         text: _text,
         time: _time,
-        isPublic: _isPublic
-      })
+        isPublic: _isPublic,
+      }),
     });
     const result = await response.json();
     return result;
@@ -141,9 +141,9 @@ export const getCommentsByPostId = async (postId, token) => {
   try {
     const response = await fetch(`${BASE_URL}/comments/${postId}`, {
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
@@ -156,15 +156,15 @@ export const getCommentsByPostId = async (postId, token) => {
 export const newComment = async (token, postId, time, text) => {
   try {
     const response = await fetch(`${BASE_URL}/comments/${postId}`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         text,
-        time
-      })
+        time,
+      }),
     });
     const result = await response.json();
     return result;
@@ -176,15 +176,15 @@ export const newComment = async (token, postId, time, text) => {
 export const editComment = async (commentId, text, token) => {
   try {
     const response = await fetch(`${BASE_URL}/comments/${commentId}`, {
-      method: 'PATCH',
+      method: "PATCH",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         text,
-        time: new Date()
-      })
+        time: new Date(),
+      }),
     });
     const result = response.json();
     return result;
@@ -196,11 +196,11 @@ export const editComment = async (commentId, text, token) => {
 export const removeComment = async (commentId, token) => {
   try {
     const response = await fetch(`${BASE_URL}/comments/${commentId}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
@@ -212,14 +212,14 @@ export const removeComment = async (commentId, token) => {
 export const addUpvoteToComment = async (commentId, token) => {
   try {
     const response = await fetch(`${BASE_URL}/comment_upvotes/add`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        id: commentId
-      })
+        id: commentId,
+      }),
     });
     const result = response.json();
     return result;
@@ -231,14 +231,14 @@ export const addUpvoteToComment = async (commentId, token) => {
 export const removeUpvoteFromComment = async (commentId, token) => {
   try {
     const response = await fetch(`${BASE_URL}/comment_upvotes/remove`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        id: commentId
-      })
+        id: commentId,
+      }),
     });
     const result = response.json();
     return result;
@@ -251,9 +251,9 @@ export const getAllMyMessages = async (token, userId) => {
   try {
     const response = await fetch(`${BASE_URL}/messages/chatlist`, {
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
@@ -266,9 +266,9 @@ export const getMyUserInfo = async (token) => {
   try {
     const response = await fetch(`${BASE_URL}/users/me`, {
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
@@ -281,9 +281,9 @@ export const getFriendMessages = async (token, friendUserId) => {
   try {
     const response = await fetch(`${BASE_URL}/messages/chat/${friendUserId}`, {
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
@@ -295,16 +295,16 @@ export const getFriendMessages = async (token, friendUserId) => {
 export const sendMessage = async (recipientUserId, time, text, token) => {
   try {
     const response = await fetch(`${BASE_URL}/messages/new`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         recipientUserId,
         text,
-        time
-      })
+        time,
+      }),
     });
     const result = await response.json();
     return result;
@@ -317,9 +317,9 @@ export const getMyFriends = async (token, userId) => {
   try {
     const response = await fetch(`${BASE_URL}/friendsLists/${userId}`, {
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
@@ -333,11 +333,11 @@ export const requestFriend = async (token, requestedFriendUsername) => {
     const response = await fetch(
       `${BASE_URL}/friendRequests/new/${requestedFriendUsername}`,
       {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        }
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
       }
     );
     const result = await response.json();
@@ -350,11 +350,11 @@ export const requestFriend = async (token, requestedFriendUsername) => {
 export const acceptFriend = async (token, newFriendId) => {
   try {
     const response = await fetch(`${BASE_URL}/friendsLists/${newFriendId}`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
@@ -366,14 +366,14 @@ export const acceptFriend = async (token, newFriendId) => {
 export const denyFriend = async (token, requestedFriendId) => {
   try {
     const response = await fetch(`${BASE_URL}/friendRequests/remove`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        requestedFriendId
-      })
+        requestedFriendId,
+      }),
     });
     const result = await response.json();
     return result;
@@ -388,9 +388,9 @@ export const getFriendStatus = async (token, username) => {
       `${BASE_URL}/friendsLists/status/${username}`,
       {
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        }
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
       }
     );
     const result = await response.json();
@@ -403,11 +403,11 @@ export const getFriendStatus = async (token, username) => {
 export const deleteMessage = async (token, messageId) => {
   try {
     const response = await fetch(`${BASE_URL}/messages/${messageId}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
@@ -420,9 +420,9 @@ export const getAFriend = async (token, friendId) => {
   try {
     const response = await fetch(`${BASE_URL}/users/${friendId}`, {
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
@@ -435,9 +435,9 @@ export const getAllMyNotifications = async (token) => {
   try {
     const response = await fetch(`${BASE_URL}/notifications/me`, {
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
@@ -450,9 +450,9 @@ export const getUnseenNotifications = async (token) => {
   try {
     const response = await fetch(`${BASE_URL}/notifications/unseen`, {
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
@@ -464,11 +464,11 @@ export const getUnseenNotifications = async (token) => {
 export const seeNotification = async (token, notiId) => {
   try {
     const response = await fetch(`${BASE_URL}/notifications/seen/${notiId}`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
@@ -480,11 +480,11 @@ export const seeNotification = async (token, notiId) => {
 export const seeMyNotifications = async (token) => {
   try {
     const response = await fetch(`${BASE_URL}/notifications/seeall`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     return result;
