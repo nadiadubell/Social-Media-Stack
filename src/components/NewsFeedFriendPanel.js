@@ -52,7 +52,7 @@ const FriendPanel = ({ friend }) => {
         </p>
         <div id="fp-status-wrapper">
           <div className={lastSeen === "Online" ? "Online" : "Offline"}></div>
-          <p id="fp-last-seen">{timeAgo(friend.lastActive)}</p>
+          <p id="fp-last-seen">{lastSeen}</p>
         </div>
       </div>
     </div>
