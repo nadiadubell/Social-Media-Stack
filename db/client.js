@@ -17,12 +17,12 @@ if (DEV_MODE) {
   module.exports = client;
 } else {
   const client = new Pool({
-    user: "ndubell01",
-    host: "db.bit.io",
+    user: "postgres",
+    host: "db.bfmsluauzbdbzaohecte.supabase.co",
     database: DATABASE_URL,
     password: PASSWORD, // key from bit.io database page connect menu
     port: 5432,
-    ssl: true,
+    ssl: false,
   });
   module.exports = client;
 }
