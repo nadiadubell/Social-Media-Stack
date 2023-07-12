@@ -15,6 +15,7 @@ postUpvotesRouter.get("/:postId", requireUser, async (req, res, next) => {
   try {
     const post = await getPostById(postId);
     const { upvotes, upvoterIds } = await getPostUpvotesById(postId);
+
     let userHasUpvoted = false;
     const { userId } = req.user;
     userHasUpvoted = await checkIfUpvotedPost({ postId, userId });
@@ -27,7 +28,7 @@ postUpvotesRouter.get("/:postId", requireUser, async (req, res, next) => {
     } else {
       res.send({
         userHasUpvoted,
-        postUpvotes,
+        upvotes,
         upvoterIds,
         success: `This post has ${upvotes} upvotes`,
       });
@@ -39,7 +40,7 @@ postUpvotesRouter.get("/:postId", requireUser, async (req, res, next) => {
 
 postUpvotesRouter.post("/add", requireUser, async (req, res, next) => {
   const { userId } = req.user;
-  const { id: postId } = req.body;
+  const { postId } = req.body;
 
   try {
     const post = await getPostById(postId);
@@ -75,8 +76,8 @@ postUpvotesRouter.post("/add", requireUser, async (req, res, next) => {
 });
 
 postUpvotesRouter.delete("/remove", requireUser, async (req, res, next) => {
-  const { userId } = req.user;
-  const { postId } = req.body;
+  const { id: userId } = req.user;
+  const { id: postId } = req.body;
 
   try {
     const post = await getPostById(postId);

@@ -31,6 +31,7 @@
     "client:build": "react-scripts build",
     "client:start": "react-scripts start",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:watch": "jest --watchAll"
   },
   "devDependencies": {

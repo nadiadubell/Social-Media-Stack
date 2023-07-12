@@ -1,4 +1,4 @@
-const DEV_MODE = false;
+const DEV_MODE = true;
 let BASE_URL = "";
 
 if (DEV_MODE) {
@@ -145,6 +145,45 @@ export const getCommentsByPostId = async (postId, token) => {
       },
     });
     const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const addUpvoteToPost = async (postId, token) => {
+  try {
+    const response = await fetch(`${BASE_URL}/post_upvotes/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        id: postId,
+      }),
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const removeUpvoteFromPost = async (postId, token) => {
+  try {
+    const response = await fetch(`${BASE_URL}/post_upvotes/remove`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        id: postId,
+      }),
+    });
+    const result = response.json();
     return result;
   } catch (error) {
     console.error(error);
