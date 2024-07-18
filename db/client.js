@@ -1,6 +1,6 @@
 const { Pool } = require("pg");
 
-const DEV_MODE = true;
+const DEV_MODE = false;
 const DATABASE_URL = process.env.DB_URL;
 const PASSWORD = process.env.DB_PW;
 
