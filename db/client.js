@@ -1,6 +1,6 @@
 const { Pool } = require("pg");
 
-const DEV_MODE = false;
+const DEV_MODE = true;
 const DATABASE_URL = process.env.DB_URL;
 const PASSWORD = process.env.DB_PW;
 
@@ -18,7 +18,7 @@ if (DEV_MODE) {
 } else {
   const client = new Pool({
     user: "postgres",
-    host: "db.bfmsluauzbdbzaohecte.supabase.co",
+    host: "aws-0-us-east-1.pooler.supabase.com",
     database: DATABASE_URL,
     password: PASSWORD, // key from bit.io database page connect menu
     port: 5432,
