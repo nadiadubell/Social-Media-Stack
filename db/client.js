@@ -18,7 +18,7 @@ if (DEV_MODE) {
 } else {
   const client = new Pool({
     user: "postgres",
-    host: "aws-0-us-east-1.pooler.supabase.com",
+    host: "postgres.bfmsluauzbdbzaohecte",
     database: DATABASE_URL,
     password: PASSWORD, // key from bit.io database page connect menu
     port: 5432,
