@@ -23,12 +23,12 @@ if (DEV_MODE) {
   module.exports = client;
 } else {
   const client = new Pool({
-    user: "postgres",
-    host: "aws-0-us-east-1.pooler.supabase.com",
-    database: DATABASE_URL,
-    password: PROD_PASSWORD, // key from bit.io database page connect menu
-    port: 6543,
-    // connectionString: DATABASE_URL,
+    // user: "postgres",
+    // host: "aws-0-us-east-1.pooler.supabase.com",
+    // database: DATABASE_URL,
+    // password: PROD_PASSWORD, // key from bit.io database page connect menu
+    // port: 6543,
+    connectionString: DATABASE_URL,
     ssl: {
       rejectUnauthorized: false,
     },
