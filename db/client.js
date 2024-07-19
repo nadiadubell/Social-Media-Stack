@@ -17,7 +17,7 @@ if (DEV_MODE) {
   module.exports = client;
 } else {
   const client = new Pool({
-    connectionString: DATABASE_URL,
+    DATABASE_URL,
     // user: "postgres",
     // host: "postgres.bfmsluauzbdbzaohecte",
     // database: DATABASE_URL,
