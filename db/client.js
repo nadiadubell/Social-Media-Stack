@@ -17,11 +17,12 @@ if (DEV_MODE) {
   module.exports = client;
 } else {
   const client = new Pool({
-    user: "postgres",
-    host: "postgres.bfmsluauzbdbzaohecte",
-    database: DATABASE_URL,
-    password: PASSWORD, // key from bit.io database page connect menu
-    port: 5432,
+    connectionString: DATABASE_URL,
+    // user: "postgres",
+    // host: "postgres.bfmsluauzbdbzaohecte",
+    // database: DATABASE_URL,
+    // password: PASSWORD, // key from bit.io database page connect menu
+    // port: 5432,
     ssl: false,
   });
   module.exports = client;
